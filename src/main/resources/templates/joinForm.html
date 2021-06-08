@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="fragments/config:: configFragment">
+<meta charset="utf-8">
+</head>
+<body>
+	<nav th:replace="fragments/header:: headFragment"></nav>
+	<br>
+	<div class="container">
+		<form>
+			<div class="form-group">
+				<label for="Username">Username</label> <input type="text" class="form-control" placeholder="Enter Username" id="username">
+			</div>
+
+			<div class="form-group">
+				<label for="password">Password</label> <input type="password" class="form-control" placeholder="Enter password" id="password">
+			</div>
+			
+			<div class="form-group">
+				<label for="email">Email</label> <input type="email" class="form-control" placeholder="Enter email" id="email">
+			</div>
+
+		</form>
+		<button disabled id="btn-save" type="button" th:onclick="save()" class="btn btn-primary">회원가입</button>
+		<button id="btn-chkusername" type="button" th:onclick="chkusername()" class="btn btn-primary">username중복체크</button>
+	</div>
+	<footer th:replace="fragments/footer:: footFragment"></footer>
+
+<script type="text/javascript" src="/js/user.js"></script>
+</body>
+</html>
+
+

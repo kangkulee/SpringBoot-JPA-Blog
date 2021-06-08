@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/config:: configFragment">
+<meta charset="utf-8">
+</head>
+<body>
+	<nav th:replace="fragments/header:: headFragment"></nav>
+	<br>
+	<div class="container">
+
+		<div th:if="${size} == 0" class="card m-2">
+			<div class="card-body">
+				<h4 class="card-title">작성된 글이 없습니다.</h4>
+			</div>
+		</div>
+
+		<div th:unless="${size} == 0" th:each="list : ${boards}" class="card m-2">
+			<div class="card-body">
+				<h4 th:text="${list.title}" class="card-title">제목 적는 부분</h4>
+				<a th:href="@{'/board/'+${list.id}}" class="btn btn-primary">상세보기</a>
+			</div>
+		</div>
+
+		<ul class="pagination justify-content-center">
+			<th:block th:if="${boards.first}">
+				<li class="page-item disabled"><a class="page-link" th:href="@{'?page='+${boards.number-1}}"><</a></li>
+			</th:block>
+			<th:block th:unless="${boards.first}">
+				<li class="page-item"><a class="page-link" th:href="@{'?page='+${boards.number-1}}"><</a></li>
+			</th:block>
+			
+			<th:block>
+				<li class="page-item"><a class="page-link" th:href="@{'?page=' + ${boards.number}}" th:text=${boards.number+1}>1</a></li>
+			</th:block>
+			
+			<th:block th:if="${boards.last}">
+				<li class="page-item disabled"><a class="page-link" th:href="@{'?page='+${boards.number+1}}">></a></li>
+			</th:block>
+			<th:block th:unless="${boards.last}">
+				<li class="page-item"><a class="page-link" th:href="@{'?page='+${boards.number+1}}">></a></li>
+			</th:block>
+		</ul>
+	</div>
+	<footer th:replace="fragments/footer:: footFragment"></footer>
+</body>
+</html>

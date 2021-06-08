@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="fragments/config:: configFragment">
+<meta charset="utf-8">
+</head>
+<body>
+	<nav th:replace="fragments/header:: headFragment"></nav>
+	<br>
+	<div class="container">
+		<form action="/auth/loginProc" method="POST">
+			<div class="form-group">
+				<label for="Username">Username</label>
+				<input type="text" name="username" class="form-control" placeholder="Enter Username" id="username">
+			</div>
+
+			<div class="form-group">
+				<label for="password">Password</label>
+				<input type="password" name="password" class="form-control" placeholder="Enter password" id="password">
+			</div>
+			<button type="btn-login" class="btn btn-primary">로그인</button>
+			<a th:href="@{https://kauth.kakao.com/oauth/authorize?client_id=04d3f826f4f34f60fb2f89a3a946d66e&redirect_uri=http://localhost:8000/auth/kakao/callback&response_type=code}"><img alt="카카오 로그인" width="74px" height="38px" src="/images/kakao_login_button.png"></a>
+		</form>
+	</div>
+	<footer th:replace="fragments/footer:: footFragment"></footer>
+	<!-- <script type="text/javascript" src="/js/user.js"></script> -->
+</body>
+</html>
